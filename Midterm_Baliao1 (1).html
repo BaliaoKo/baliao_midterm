@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surigao - Paradise Awaits</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background: #f4f4f4; /* Overall background color */
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0083B0, #00B4DB);
+            color: white;
+            padding: 20px;
+            font-size: 1.8em;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            left: 20px;
+            height: 50px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background: #0077b6;
+        }
+        nav a {
+            margin: 0 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Home Section Styles */
+        .home {
+            min-height: 100vh; /* Full height for the home section */
+            background: url('bal.jpg') no-repeat center center/cover; /* Image as background */
+            display: flex; /* Center content */
+            flex-direction: column; /* Stack children vertically */
+            justify-content: flex-end; /* Align content to the bottom */
+            text-align: left; /* Align text to the left */
+            padding: 30px; /* Padding for space from the edges */
+            color: white; /* White text for better visibility */
+            position: relative;
+        }
+        .home h2 {
+            font-size: 3em; /* Larger header font size */
+            margin-bottom: 20px; /* Spacing below header */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Text shadow for better readability */
+        }
+        .home p {
+            font-size: 1.2em; /* Increased paragraph font size */
+            line-height: 1.6; /* Improved line spacing */
+            max-width: 800px; /* Limit paragraph width for better readability */
+            margin: 0; /* No margin */
+        }
+
+        /* Places Section Styles */
+        .places {
+            min-height: 100vh; /* Full height for the places section */
+            
+            display: flex; /* Stack children vertically */
+            flex-direction: column; /* Maintain a column layout */
+            justify-content: center; /* Center the content vertically */
+            padding: 40px; /* Padding around the content */
+            color: black; /* White text for better visibility */
+            position: relative; /* Context for child elements */
+        }
+
+        .places h2 {
+            font-size: 2.5em; /* Larger header font size */
+            text-align: center; /* Center align section heading */
+            margin-bottom: 30px; /* Spacing below header */
+	    color: yellow; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow */
+        }
+
+        .places-container {
+            display: flex; /* Use flexbox for layout */
+            flex-wrap: wrap; /* Allow items to wrap to next line */
+            justify-content: center; /* Center align items */
+        }
+
+        .place-item {
+            background: rgba(255, 255, 255, 0.2); /* Light background for items */
+            border-radius: 10px; /* Round corners */
+            padding: 20px; /* Inner spacing */
+            margin: 15px; /* Spacing between items */
+            width: 300px; /* Fixed width for place items */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            transition: transform 0.3s; /* Transition for hover effect */
+        }
+
+        .place-item:hover {
+            transform: scale(1.05); /* Scale up on hover */
+        }
+
+        .place-item strong {
+            font-size: 1.5em; /* Stronger emphasis on place names */
+            color: #FFDD00; /* Gold color for contrast */
+        }
+
+        /* Barangay Section Styles */
+        .barangay {
+            min-height: 100vh; /* Full height for the barangay section */
+            display: flex; /* Stack children vertically */
+            flex-direction: column; /* Maintain a column layout */
+            padding: 40px; /* Padding around the content */
+            color: #333; /* Normal text color for readability */
+            position: relative; /* Positioning context for child elements */
+            background: url('bal4.jpg') no-repeat center center/cover; /* Background image */
+            background-size: cover; /* Ensure the image covers the entire section */
+            border-radius: 15px; /* Round the corners of the section */
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3); /* Increased shadow size for depth */
+            margin: 20px; /* Space around the barangay section */
+            overflow: hidden; /* Prevent overflow of content */
+        }
+
+        .barangay-content {
+            background: rgba(255, 255, 255, 0.8); /* Light background for content */
+            border-radius: 15px; /* Round corners */
+            padding: 20px; /* Inner spacing */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            max-width: 800px; /* Limit width for better readability */
+            margin: auto; /* Center the content */
+        }
+
+        .barangay h2 {
+            font-size: 2.5em; /* Larger header font size */
+            text-align: center; /* Center align section heading */
+            margin-bottom: 30px; /* Spacing below header */
+            color: #0077b6; /* Darker color for header */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Subtle text shadow */
+        }
+
+        .barangay-list {
+            list-style: none; /* Remove default list styles */
+            padding-left: 0; /* Remove padding */
+            margin: 0; /* No margin */
+            display: grid; /* Use CSS Grid for layout */
+            grid-template-columns: repeat(3, 1fr); /* Three columns */
+            gap: 15px; /* Space between items */
+        }
+
+        .barangay-list li {
+            background: rgba(255, 255, 255, 0.9); /* Light background for barangay items */
+            border-radius: 10px; /* Round corners */
+            padding: 10px; /* Padding for list items */
+            font-size: 1.1em; /* Slightly larger font size for items */
+            text-align: center; /* Center align text in each item */
+            transition: background-color 0.3s, transform 0.3s; /* Transition effects for hover */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15); /* Subtle shadow effect */
+        }
+
+        .barangay-list li:hover {
+            background: #e0e0e0; /* Change background on hover */
+            transform: translateY(-3px); /* Lift effect on hover */
+        }
+
+        /* Officials Section Styles */
+        .officials {
+            padding: 40px; /* Padding around the content */
+            background: rgba(255, 255, 255, 0.9); /* Light background for visibility */
+            border-radius: 15px; /* Round corners */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            margin: 20px auto; /* Center with margin on the sides */
+            max-width: 600px; /* Limit width for better readability */
+        }
+
+        .officials h2 {
+            text-align: center; /* Center align section heading */
+            margin-bottom: 20px; /* Spacing below header */
+            color: #0077b6; /* Color for heading */
+        }
+
+        .officials p {
+            font-size: 1.2em; /* Font size for names */
+            line-height: 1.6; /* Line height for readability */
+            margin: 10px 0; /* Spacing between names */
+        }
+
+        /* History Section Styles */
+        .history {
+            padding: 40px; /* Padding around the content */
+            background: rgba(255, 255, 255, 0.9); /* Light background for visibility */
+            border-radius: 15px; /* Round corners */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            margin: 20px auto; /* Center with margin on the sides */
+            max-width: 800px; /* Limit width for better readability */
+        }
+
+        .history h2 {
+            text-align: center; /* Center align section heading */
+            color: #0077b6; /* Color for heading */
+            margin-bottom: 20px; /* Spacing below header */
+        }
+
+        .history h3 {
+            margin-top: 20px; /* Spacing above subheadings */
+            color: #333; /* Color for subheadings */
+        }
+
+        .history p {
+            font-size: 1.1em; /* Font size for paragraphs */
+            line-height: 1.6; /* Line height for readability */
+            margin: 10px 0; /* Spacing between paragraphs */
+        }
+
+        /* Festivals Section Styles */
+        .festivals {
+            padding: 40px; /* Padding around the content */
+            background: rgba(255, 255, 255, 0.9); /* Light background for visibility */
+            border-radius: 15px; /* Round corners */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            margin: 20px auto; /* Center with margin on the sides */
+            max-width: 800px; /* Limit width for better readability */
+        }
+
+        .festivals h2 {
+            text-align: center; /* Center align section heading */
+            color: #0077b6; /* Color for heading */
+            margin-bottom: 20px; /* Spacing below header */
+        }
+
+        .festival-item {
+            margin-bottom: 20px; /* Spacing between festival items */
+        }
+
+        .festival-item h3 {
+            color: #333; /* Color for festival names */
+            margin: 5px 0; /* Spacing above and below festival names */
+        }
+
+        .festival-item p {
+            font-size: 1em; /* Font size for festival descriptions */
+            line-height: 1.6; /* Line height for readability */
+            margin: 5px 0; /* Spacing between lines of text */
+        }
+
+        footer {
+            background: #0077b6;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 30px;
+        }
+    </style>
+    <script>
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.content').forEach(function(el) {
+                el.style.display = 'none';
+            });
+
+            // Show the selected section
+            document.getElementById(section).style.display = 'block';
+        }
+    </script>
+</head>
+<body onload="showSection('home')"> <!-- Show home section by default -->
+    <header>
+        <img src="bal2.jpg" class="logo" alt="Logo">
+        Welcome to Surigao - Paradise Awaits
+    </header>
+    <nav>
+        <a href="javascript:void(0);" onclick="showSection('home')">Home</a>
+        <a href="javascript:void(0);" onclick="showSection('places')">Places</a>
+        <a href="javascript:void(0);" onclick="showSection('barangays')">Barangays</a>
+        <a href="javascript:void(0);" onclick="showSection('officials')">Officials</a>
+        <a href="javascript:void(0);" onclick="showSection('history')">History</a>
+        <a href="javascript:void(0);" onclick="showSection('festivals')">Festivals</a>
+    </nav>
+    
+    <!-- Home Section -->
+    <div class="content home" id="home">
+        <h2>Discover Surigao del Norte</h2>
+        <p>Surigao del Norte is a province located in the northeastern part of Mindanao, Philippines. Known for its breathtaking landscapes, pristine beaches, and friendly locals, Surigao del Norte offers a unique blend of natural beauty, rich culture, and a relaxed atmosphere that makes it a perfect destination for travelers and a wonderful place to call home.</p>
+        <p>The province is home to the famous Siargao Island, widely regarded as the surfing capital of the Philippines, attracting adventurers and surfers from around the world. But Surigao del Norte has much more to offer, from crystal-clear lagoons, waterfalls, and hidden caves to vibrant festivals and delicious local delicacies.</p>
+    </div>
+
+    <!-- Places Section -->
+    <div class="content places" id="places">
+        <h2>Popular Tourist Spots in Surigao del Norte</h2>
+        <div class="places-container">
+            <div class="place-item">
+                <strong>Siargao Island</strong>
+                <p>Famous for its surfing, particularly Cloud 9, Siargao is a paradise for beach lovers and adventure seekers. The island also offers beautiful lagoons, mangrove forests, and is famous for its rock pools and island-hopping tours.</p>
+            </div>
+            <div class="place-item">
+                <strong>Sohoton Natural Bridge National Park</strong>
+                <p>This national park features impressive limestone formations, rivers, and caves. Visitors can enjoy activities like kayaking, swimming, and exploring the park’s natural beauty.</p>
+            </div>
+            <div class="place-item">
+                <strong>Naked Island</strong>
+                <p>An uninhabited island with soft white sand and clear blue waters, Naked Island is perfect for sunbathing and relaxing. It’s often included in island-hopping tours from Siargao.</p>
+            </div>
+            <div class="place-item">
+                <strong>Daku Island</strong>
+                <p>Known for its picturesque beaches and laid-back atmosphere, Daku Island is a great spot for swimming, snorkeling, and enjoying fresh seafood.</p>
+            </div>
+            <div class="place-item">
+                <strong>Magpupungko Rock Pools</strong>
+                <p>Located in Pilar, these natural rock pools are accessible during low tide and offer great swimming spots amidst beautiful scenery.</p>
+            </div>
+            <div class="place-item">
+                <strong>Timoga Springs</strong>
+                <p>While technically in the nearby province of Lanao del Norte, this site often attracts visitors from Surigao. It features natural spring pools and is ideal for a refreshing swim.</p>
+            </div>
+            <div class="place-item">
+                <strong>Bucas Grande Island</strong>
+                <p>Known for its stunning lagoons and the famous Sohoton Cove, Bucas Grande is great for water activities like kayaking and snorkeling.</p>
+            </div>
+            <div class="place-item">
+                <strong>Crooked Island</strong>
+                <p>A lesser-known gem, this island features stunning beaches and is perfect for a day of relaxation away from the crowds.</p>
+            </div>
+            <div class="place-item">
+                <strong>Cagwait Beach</strong>
+                <p>Located in the town of Cagwait, this beach is known for its crescent shape and white sand. It’s an excellent spot for swimming and sunbathing.</p>
+            </div>
+            <div class="place-item">
+                <strong>Surigao City</strong>
+                <p>The capital city itself has attractions such as the Surigao City Cathedral, the historic Mabua Pebble Beach, and the picturesque San Juanico Bridge connecting to Leyte.</p>
+            </div>
+        </div> 
+    </div>
+
+    <!-- Barangay Section -->
+    <div class="content barangay" id="barangays">
+        <div class="barangay-content">
+            <h2>Barangays of Surigao del Norte</h2>
+            
+            <div class="municipality">
+                <h3>1. Surigao City</h3>
+                <div class="places-container">
+                    <div class="place-item">
+                        <ul class="barangay-list">
+                            <li>Alegria</li>
+                            <li>Bacay</li>
+                            <li>Bagacay</li>
+                            <li>Bañadero</li>
+                            <li>Bonifacio</li>
+                            <li>Cagniog</li>
+                            <li>Camago</li>
+                            <li>Can-aza</li>
+                            <li>Culasi</li>
+                            <li>Doon</li>
+                            <li>Lower Bonifacio</li>
+                            <li>Lunao</li>
+                            <li>Maglayan</li>
+                            <li>Magsaysay</li>
+                            <li>Magsaysay (formerly Dapo)</li>
+                            <li>Pangabuan</li>
+                            <li>Poblacion (District I)</li>
+                            <li>Poblacion (District II)</li>
+                            <li>San Juan</li>
+                            <li>San Jose</li>
+                            <li>San Pedro</li>
+                            <li>Santiago</li>
+                            <li>Sison</li>
+                            <li>Sto. Niño</li>
+                            <li>Suyoga</li>
+                            <li>Talisay</li>
+                            <li>Tierra Alta</li>
+                            <li>Upper Bonifacio</li>
+                            <li>Zaragoza</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Officials Section -->
+    <div class="content officials" id="officials">
+        <div class="officials">
+            <h2>Officials of Surigao del Norte</h2>
+            <p><strong>Governor:</strong> Robert Lyndon S. Barbers</p>
+            <p><strong>Vice Governor:</strong> Eddie "Geed" Gokiangkee Jr.</p>
+            <p><strong>1st District Representative:</strong> Francisco Jose F. Matugas II</p>
+            <p><strong>2nd District Representative:</strong> Robert Ace S. Barbers</p>
+        </div>
+    </div>
+
+    <!-- History Section -->
+    <div class="content history" id="history">
+        <div class="history">
+            <h2>History of Surigao del Norte</h2>
+            
+            <h3>Pre-Colonial Period</h3>
+            <p>Before the arrival of the Spaniards, the area now known as Surigao del Norte was populated by various indigenous groups with their own distinct cultures and practices. The region was rich in resources, and its coastal areas supported fishing and trade with neighboring islands and territories.</p>
+            
+            <h3>Spanish Colonization (16th Century)</h3>
+            <p>Surigao was among the first areas in Mindanao to be visited by Spanish explorers. In 1565, Miguel López de Legazpi arrived in the area and claimed it for Spain. The town of Surigao was established, and it became a significant port and center of trade during the Spanish colonial period. The discovery of gold and other mineral resources attracted settlers and Spanish authorities.</p>
+            <p>The Spanish introduced Christianity, and many indigenous people converted to Catholicism. Various missions were established, and the influence of the Catholic Church deepened in the region.</p>
+            
+            <h3>American Period (Late 19th - Early 20th Century)</h3>
+            <p>In 1898, the Philippines was ceded to the United States after the Spanish-American War. The American colonial government implemented changes in governance and education, introducing a new system of civil administration.</p>
+            <p>Surigao became the capital of the province of Surigao, which then encompassed both Surigao del Norte and Surigao del Sur. The province was officially divided into two separate provinces in 1970.</p>
+            
+            <h3>World War II (1941-1945)</h3>
+            <p>During World War II, Surigao was invaded by Japanese forces. The area saw various military activities, and the local population experienced significant hardship. The liberation of the Philippines began in 1944, and American forces retook Surigao and surrounding areas.</p>
+            
+            <h3>Post-Independence Era</h3>
+            <p>After the Philippines gained independence in 1946, Surigao del Norte continued to develop, with agriculture, fishing, and mining forming the backbone of its economy. Infrastructure improvements, such as roads and schools, were made in the years following independence. The province became known for its natural beauty, featuring beaches, mountain ranges, and rich marine biodiversity.</p>
+            
+            <h3>Recent Developments</h3>
+            <p>In recent decades, Surigao del Norte has gained recognition for its tourism potential, particularly in areas like Siargao Island, famous for its surfing spots. The local government and communities have increasingly focused on sustainable tourism to promote economic development while preserving the environment.</p>
+            <p>The region has faced challenges, including natural disasters like typhoons and earthquakes. Significant events, such as the 2017 earthquake, have prompted increased awareness and strengthening of disaster response and preparedness measures in the province.</p>
+            
+        </div>
+    </div>
+
+    <!-- Festivals Section -->
+    <div class="content festivals" id="festivals">
+        <div class="festivals">
+            <h2>Festivals in Surigao del Norte</h2>
+            <div class="festival-item">
+                <h3>1. Bonok-Bonok Maradong Festival</h3>
+                <p><strong>Location:</strong> Surigao City</p>
+                <p><strong>Date:</strong> Celebrated annually in March, typically around the feast day of St. Joseph, the city’s patron saint.</p>
+                <p><strong>Description:</strong> This vibrant festival features street dancing, cultural presentations, and a series of activities showcasing the history, culture, and talents of Surigao City. The festival is named after the local term "bonok-bonok," which refers to the unique rhythm of the dance performed during the festivities.</p>
+            </div>
+
+            <div class="festival-item">
+                <h3>2. Siargao Surfing Festival</h3>
+                <p><strong>Location:</strong> Siargao Island</p>
+                <p><strong>Date:</strong> Usually held during the month of September.</p>
+                <p><strong>Description:</strong> This festival celebrates Siargao’s reputation as one of the premier surfing destinations in the world. It includes various surfing competitions, beach activities, live music, and a showcase of local arts and crafts.</p>
+            </div>
+
+            <div class="festival-item">
+                <h3>3. Higaonon Festival</h3>
+                <p><strong>Location:</strong> The town of Bacuag</p>
+                <p><strong>Date:</strong> Celebrated in February or March.</p>
+                <p><strong>Description:</strong> This festival honors the indigenous Higaonon people and showcases their culture through traditional dances, music, and rituals. The festival aims to promote the cultural heritage of the Higaonon community.</p>
+            </div>
+
+            <div class="festival-item">
+                <h3>4. Kawhi Festival</h3>
+                <p><strong>Location:</strong> The municipality of Claver</p>
+                <p><strong>Date:</strong> Celebrated in June.</p>
+                <p><strong>Description:</strong> This festival highlights the local coconut industry, with various activities that showcase the versatility of coconut products. It features street dancing, a trade fair, and the showcasing of local crafts and delicacies.</p>
+            </div>
+
+            <div class="festival-item">
+                <h3>5. Linggo ng Parole Festival</h3>
+                <p><strong>Location:</strong> The municipality of Tandag (note: sometimes also associated with Surigao del Norte)</p>
+                <p><strong>Date:</strong> Usually held in December.</p>
+                <p><strong>Description:</strong> While this festival often takes place in December, it is celebrated near the Christmas season. The festival focuses on traditional practices, crafts, and local culture, often highlighted by colorful parol (Christmas lantern) displays and contests.</p>
+            </div>
+
+            <div class="festival-item">
+                <h3>6. Saging Festival</h3>
+                <p><strong>Location:</strong> The municipality of Malimono</p>
+                <p><strong>Date:</strong> Typically held in the month of October.</p>
+                <p><strong>Description:</strong> This festival celebrates the abundance of bananas (saging) in the area, showcasing various banana-based dishes and products. Activities often include fun games, a parade, and cultural presentations.</p>
+            </div>
+
+            <div class="festival-item">
+                <h3>7. Daragang Magayon Festival</h3>
+                <p><strong>Location:</strong> Various municipalities in the province</p>
+                <p><strong>Date:</strong> Celebrated in May.</p>
+                <p><strong>Description:</strong> This festival is meant to promote local culture and tourism, featuring a range of cultural performances, street dancing, and beauty pageants.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 Surigao Tourism | Discover & Explore
+    </footer>
+</body>
+</html>
